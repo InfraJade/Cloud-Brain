@@ -47,6 +47,8 @@ Then edit `backend/.env`:
 - `CLOUD_BRAIN_USERS`: who can sign in, as `email:password:Full Name:role` entries separated by `;`.
   `role` is `admin` (can also delete resources) or `operator`.
 - `JWT_SECRET_KEY`: any long random string.
+- `CHATOPS_API_URL`: the base URL of the Cloud Brain API Gateway (`https://<api-id>.execute-api.us-east-1.amazonaws.com`).
+  Ask the backend owner for it. It isn't stored in the repository.
 - `CHATOPS_AWS_ACCESS_KEY_ID` / `CHATOPS_AWS_SECRET_ACCESS_KEY` (or `CHATOPS_AWS_ROLE_ARN`): read access to the
   `aws-ops-resources` DynamoDB table. Without these, the Resources page and request tracking don't work; chat,
   provisioning and deletion still do.
