@@ -1,0 +1,13 @@
+# Never copy secrets into the image — they're supplied at runtime (docker-compose env_file).
+.env
+.env.*
+!.env.example
+
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+tests/
+pytest.ini
+Dockerfile
+.dockerignore

@@ -1,0 +1,26 @@
+# CLOUD BRAIN — website + backend.
+#   Start:  docker compose up -d --build
+#   Open:   http://localhost:8088  (or http://<this machine's IP>:8088 from the network)
+#   Stop:   docker compose down
+name: cloud-brain
+
+services:
+  backend:
+    build: ./backend
+    image: cloud-brain-backend:latest
+    # AWS read keys, JWT secret and users — read at runtime, never baked into the image.
+    env_file: ./backend/.env
+    restart: unless-stopped
+    # Not published to the host: only the website container talks to it.
+    expose:
+      - "8080"
+
+  frontend:
+    build: ./frontend
+    image: cloud-brain-frontend:latest
+    ports:
+      - "${CB_PORT:-8088}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

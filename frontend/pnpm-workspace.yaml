@@ -1,0 +1,10 @@
+# pnpm settings for the CLOUD BRAIN frontend (single package, no workspace members).
+
+# Supply-chain defense: only install package versions published at least 1 day ago.
+# Malicious npm releases are usually caught and pulled within hours. Do not disable.
+minimumReleaseAge: 1440
+
+# Packages allowed to run install scripts.
+onlyBuiltDependencies:
+  - esbuild
+  - '@tailwindcss/oxide'
